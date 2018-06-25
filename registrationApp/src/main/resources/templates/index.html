@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+
+
+
+
+<center>
+
+    <div class="body">
+        <center>
+            <h1 class="title"><span>Witamy w formularzu rezerwacji</span></h1></center>
+        <form class="dupcia" th:action="@{/}" th:object="${reservationForm}" method="post">
+            <center><h1><span  th:text="${errorInfo}" style="color: red"></span></h1></center>
+         
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red"></span>
+            <br/>
+            <input placeholder="Imie" type="text" th:field="*{name}">
+            <br/>
+            <span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" style="color: red"></span>
+            <br/>
+            <input placeholder="Nazwisko" type="text" th:field="*{lastname}">
+            <p></p>
+            <span th:if="${#fields.hasErrors('adres')}" th:errors="*{adres}" style="color: red"></span>
+            <p></p>
+            <input placeholder="Miasto" type="text" th:field="*{adres}">
+            <p></p>
+         
+            <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}" style="color: red"></span>
+            <span th:text="${errorDate}" style="color: red"></span>
+            <p></p>
+            <input placeholder="Data: yyyy-mm-dd" type="text" th:field="*{date}">
+            <p></p>
+
+                <button class="button1" type="submit" style="vertical-align:middle"><span>Zarezerwuj </span></button>
+            <center><h1><span th:text="${error}" style="color: red"></span></h1></center>
+        </form>
+      
+        <table>
+            <tr>
+                <th>Numer klienta</th>
+                <th>Siedziba firmy (Miasto)</th>
+                <th>Data</th>
+            </tr>
+            <th:block th:each="reservation : ${reservations}">
+                <tr>
+                    <th th:text="${reservation.id}"></th>
+                    <th th:text="${reservation.adres}"></th>
+                    <th th:text="${reservation.date}"></th>
+                </tr>
+            </th:block>
+        </table>
+        
+        <center><h1 class="title1"><span>Kontakt</span></h1></center>
+       
+
+  <div class="contact">
+        <div class="contact1">
+        Kraków<br>
+        Ul.Kowalskiego 13C<br>
+        Telefonu: 123-456-789<br>
+        E-mail:<br>
+        Reservation.krk@qwe.pl
+        </div>
+         
+        <div class="contact2">
+        Warszawa<br>
+        Ul.Szczecińska 15<br>
+        Telefonu: 799-456-123<br>
+        E-mail:<br>
+        Reservation.waw@qwe.pl
+        </div>
+
+        <div class="contact3">
+        Wrocław<br>
+        Ul.Brodkowsa 20<br>
+        Telefonu: 321-654-987<br>
+        E-mail:<br>
+        Reservation.wrw@qwe.pl
+        </div>
+  </div>
+<footer>Designed by Paweł Łukaszewski — 2018©</footer>
+</div>
+</center>
+<style>
+.dupcia{
+  margin-top: -20px;
+}
+.contact{
+  padding-top: 2px;
+  height: 92px;
+  font-weight: bold;
+
+}
+.contact1{
+  float: left;
+  margin-left: 40px;
+}
+.contact2{
+  float: right;
+  margin-right: 40px;
+  
+}
+.contact3{
+  float: center;
+  width: 159.59px;
+  margin: 0px;
+
+}
+.body{
+    width: 55%;
+     height: 100%;
+      background-image: url("http://52.221.209.91/wp-content/uploads/2017/01/trianglify-background.png");
+       border: 1px solid black;
+}
+.title{
+    background-color:#4f5352;
+    color: #1de5c7;
+    margin-top: 0px;
+    margin-bottom: 0; border: 1px solid black;
+}
+.title1{
+   background-color:#4f5352;
+    color: #1de5c7;
+    margin-top: 2px;
+    margin-bottom: 0; border: 1px solid black;
+}
+.button1{
+  
+   display: inline-block;
+  border-radius: 4px;
+  background-color: #008CBA;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+  width: 180px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-bottom: -15px;
+  margin-top: -5px;
+
+}
+.button1 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button1 span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button1:hover span {
+  padding-right: 25px;
+}
+
+.button1:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+ table, th, tr {
+        border: 1px solid black;
+        border-collapse: collapse;
+        font-size: large;
+    }
+    footer{
+     background-color:#4f5352;
+    color: #ffbb33;
+    height: 22px;
+    border-top:1px solid black;
+    }
+</style>
+</body>
+
+</html>
