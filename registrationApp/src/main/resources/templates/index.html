@@ -15,7 +15,7 @@
     <div class="body">
         <center>
             <h1 class="title"><span>Witamy w formularzu rezerwacji</span></h1></center>
-        <form class="dupcia" th:action="@{/}" th:object="${reservationForm}" method="post">
+        <form class="position" th:action="@{/}" th:object="${reservationForm}" method="post">
             <center><h1><span  th:text="${errorInfo}" style="color: red"></span></h1></center>
          
             <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red"></span>
@@ -88,7 +88,7 @@
 </div>
 </center>
 <style>
-.dupcia{
+.position{
   margin-top: -20px;
 }
 .contact{
