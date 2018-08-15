@@ -16,7 +16,7 @@ Add more general information about project. What the purpose of the project is? 
 
 ## Technologies
 * Java 8
-* Spring 5 
+* Spring Boot 2.0.4
 * MySQL
 * HTML 5 
 * CSS 3
